@@ -1,16 +1,30 @@
-# React + Vite
+# DIO Page Clone em React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+O projeto consiste em uma réplica, simplificada e desenvolvida em React, da landing page da DIO, contendo 4 paginas de navegação (home, login e sing-up e feed) acessadas via do React Router. Foram implementadas validações de formulário utilizando react forms e yup, tanto para login quanto para cadastro e uma API simulada com JSON Server para persistência das informações. A comunicação com a API é realizada através do Axios. 
 
-Currently, two official plugins are available:
+O sistema valida login e cadastro verificando a existência prévia de usuários e prevenindo duplicações. Após um cadastro bem-sucedido, o banco de dados é atualizado, permitindo o login do novo usuário.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Previews
 
-## React Compiler
+### Home
+![Home Page Preview](./src/assets/preview_home.png)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Login
+![Login Page Preview](./src/assets/preview_login.png)
 
-## Expanding the ESLint configuration
+#### Validações
+![Login Page Preview](./src/assets/preview_login_valid_empty.png)
+![Login Page Preview](./src/assets/preview_login_valid_error.png)
+![Login Page Preview](./src/assets/preview_login_valid_notExists.png)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Cadastro
+![Sing-up Page Preview](./src/assets/preview_cadastro.png)
+
+#### Validações
+![Login Page Preview](./src/assets/preview_cadastro_valid_fields_empty.png)
+![Login Page Preview](./src/assets/preview_cadastro_valid_error.png)
+![Login Page Preview](./src/assets/preview_cadastro_valid_fail.png)
+![Login Page Preview](./src/assets/preview_cadastro_valid_success.png)
+
+### Feed
+![Home Page Preview](./src/assets/preview_feed.png)
