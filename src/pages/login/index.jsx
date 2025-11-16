@@ -6,64 +6,96 @@ import { Input } from '../../components/Input';
 import { api } from '../../services/api';
 
 import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup"
+import * as yup from "yup"
 
+const schema = yup
+  .object({
+    email: yup.string().email('E-mail inválido').required("Campo obrigatório"),
+    senha: yup.string().min(8, "Digite 8 caracteres ou mais").required("Campo obrigatório"),
+  })
+  .required()
 
-import { Container, Title, Column, TitleLogin, SubtitleLogin, EsqueciText, CriarText, Row, Wrapper } from './styles';
+import { Container, Title, Column, TitleLogin, SubtitleLogin, EsqueciText, CriarText, Row, Wrapper} from './styles';
 
 export default function Login () {
 
     const navigate = useNavigate()
 
-    const { control, handleSubmit, formState: { errors  } } = useForm({
-        reValidateMode: 'onChange',
-        mode: 'onChange',
+    const { control, handleSubmit, formState: { errors } } = useForm({
+        reValidateMode: 'onSubmit',
+        mode: 'onSubmit',
+        defaultValues: { 
+            email: '',
+            senha: ''
+        },
+        resolver: yupResolver(schema),
     });
 
     const onSubmit = async (formData) => {
-        try{
-            const {data} = await api.get(`/users?email=${formData.email}&senha=${formData.senha}`);
+        // try {
+        //     const { data } = await api.get(`/users?email=${formData.email}&senha=${formData.senha}`);
             
-            if(data.length && data[0].id){
-                navigate('/feed') 
-                return
-            }
+        //     if (data.length && data[0].id) {
+        //         navigate('/feed');
+        //         return;
+        //     }
+        //     alert('Usuário ou senha inválido');
+        // } catch (e) {
+        //     console.error('Erro no login:', e);
+        //     alert('Erro ao fazer login');
+        // }
 
-            alert('Usuário ou senha inválido')
-        }catch(e){
-            //TODO: HOUVE UM ERRO
-        }
+        console.log(formData);
     };
 
     const handleClickSignUp = () => {
         navigate('/signUp')
     }
 
-    console.log('errors', errors);
+    // console.log('errors', errors);
 
-    return (<>
-        <Header />
-        <Container>
-            <Column>
-                <Title>A plataforma para você aprender com experts, dominar as principais tecnologias
-                 e entrar mais rápido nas empresas mais desejadas.</Title>
-            </Column>
-            <Column>
-                <Wrapper>
-                <TitleLogin>Faça seu cadastro</TitleLogin>
-                <SubtitleLogin>Faça seu login e make the change._</SubtitleLogin>
-                <form onSubmit={handleSubmit(onSubmit)}>
-                    <Input placeholder="E-mail" leftIcon={<MdEmail />} name="email"  control={control} />
-                    {errors.email && <span>E-mail é obrigatório</span>}
-                    <Input type="password" placeholder="Senha" leftIcon={<MdLock />}  name="senha" control={control} />
-                    {errors.senha && <span>Senha é obrigatório</span>}
-                    <Button title="Entrar" variant="secondary" type="submit"/>
-                </form>
-                <Row>
-                    <EsqueciText>Esqueci minha senha</EsqueciText>
-                    <CriarText onClick={handleClickSignUp}>Criar Conta</CriarText>
-                </Row>
-                </Wrapper>
-            </Column>
-        </Container>
-    </>)
+    return ( <>
+            <Header />
+            <Container>
+                <Column>
+                    <Title>
+                        A plataforma para você aprender com experts, dominar as principais tecnologias
+                        e entrar mais rápido nas empresas mais desejadas.
+                    </Title>
+                </Column>
+                <Column>
+                    <Wrapper>
+                        <TitleLogin>Faça seu login</TitleLogin>
+                        <SubtitleLogin>Faça seu login e make the change._</SubtitleLogin>
+                        <form onSubmit={handleSubmit(onSubmit)}>
+                            <Input 
+                                placeholder="E-mail" 
+                                leftIcon={<MdEmail />} 
+                                name="email"
+                                errorMessage={errors?.email?.message} 
+                                control={control}
+                                required
+                            />
+                            
+                            <Input 
+                                type="password" 
+                                placeholder="Senha" 
+                                leftIcon={<MdLock />} 
+                                name="senha" 
+                                errorMessage={errors?.senha?.message} 
+                                control={control}
+                                required
+                            />
+                            
+                            <Button title="Entrar" variant="secondary" type="submit" />
+                        </form>
+                        <Row>
+                            <EsqueciText>Esqueci minha senha</EsqueciText>
+                            <CriarText onClick={handleClickSignUp}>Criar Conta</CriarText>
+                        </Row>
+                    </Wrapper>
+                </Column>
+            </Container>
+        </>)
 }
