@@ -8,7 +8,6 @@ import { Header } from '../../components/Header';
 import { Container, Title, TitleHighlight, TextContent } from './styles';
 
 export default function Home(){
-
     const navigate = useNavigate();
 
     const handleClickSignIn = () => {

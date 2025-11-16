@@ -7,10 +7,9 @@ import { api } from '../../services/api';
 
 import { useForm } from "react-hook-form";
 
-
 import { Container, Title, Column, TitleLogin, SubtitleLogin, EsqueciText, CriarText, Row, Wrapper } from './styles';
 
-export default function Login () {
+export default function SignUp () {
 
     const navigate = useNavigate()
 
@@ -45,18 +44,23 @@ export default function Login () {
             </Column>
             <Column>
                 <Wrapper>
-                <TitleLogin>Faça seu cadastro</TitleLogin>
-                <SubtitleLogin>Faça seu login e make the change._</SubtitleLogin>
+                <TitleLogin>Começe agora grátis</TitleLogin>
+                <SubtitleLogin>Crie sua conta e make the change._</SubtitleLogin>
                 <form onSubmit={handleSubmit(onSubmit)}>
+                    <Input placeholder="Nome Completo" leftIcon={<MdEmail />} name="nome"  control={control} />
+                    {errors.nome && <span> Nome é obrigatório</span>}
                     <Input placeholder="E-mail" leftIcon={<MdEmail />} name="email"  control={control} />
                     {errors.email && <span>E-mail é obrigatório</span>}
                     <Input type="password" placeholder="Senha" leftIcon={<MdLock />}  name="senha" control={control} />
                     {errors.senha && <span>Senha é obrigatório</span>}
-                    <Button title="Entrar" variant="secondary" type="submit"/>
+                    <Button title="Criar minha conta" variant="secondary" type="submit"/>
                 </form>
+                <p>
+                    Ao clicar em "Criar minha conta", declaro que aceito as políticas de privacidade e os termos de uso da DIO.
+                </p>
                 <Row>
-                    <EsqueciText>Esqueci minha senha</EsqueciText>
-                    <CriarText>Criar Conta</CriarText>
+                    <EsqueciText>Ja tenho conta</EsqueciText>
+                    <CriarText> Fazer Login </CriarText>
                 </Row>
                 </Wrapper>
             </Column>
