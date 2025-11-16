@@ -10,6 +10,13 @@ export const Container = styled.main`
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+
+    @media (max-width: 768px) {
+        flex-direction:column;
+        gap:1rem;
+        align-items: center;
+        justify-content: flex-start;
+    }
 `
 
 export const Wrapper = styled.div`
@@ -27,8 +34,6 @@ export const Row = styled.div`
     align-items: center;
     margin-top: 20px;
 `
-
-
 
 export const Title = styled.h2`
     font-family: 'Open Sans';

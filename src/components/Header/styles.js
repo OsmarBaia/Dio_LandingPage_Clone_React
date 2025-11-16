@@ -1,15 +1,40 @@
 import styled  from 'styled-components';
 
-export const Container = styled.div`
-   
+
+export const Wrapper = styled.div`
+    background-color: #151515;
     width: 100%;
-    max-width: 80%;
-    height: 47px;
+    min-width: 320px;
+    
+    
+    height: 2.5rem;
+
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @media (max-width: 480px) {
+        height: 4.5rem;
+    }
+`
+
+export const Container = styled.div`
+    width: 80%;
+    min-width:320px;
+    max-width:1200px;;
+    height: 100%;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 0 auto;
+
+    
+    /* Media Query para mobile */
+    @media (max-width: 480px) {
+        flex-wrap:wrap;
+        justify-content: center;
+    }
 `
 
 export const Row = styled.div`
@@ -18,18 +43,9 @@ export const Row = styled.div`
     align-items: center;
 `;
 
-export const Wrapper = styled.div`
-    background-color: #151515;
-    width: 100%;
-    height: 47px;
-    display:flex
-    justify-content: center;
-    align-items: center
-`
-
 export const BuscarInputContainer = styled.div`
     width: 275px;
-    height: 30px;
+    height: 2rem;
     background: #2D2D37;
     border-radius: 8px;
     padding: 2px 5px;

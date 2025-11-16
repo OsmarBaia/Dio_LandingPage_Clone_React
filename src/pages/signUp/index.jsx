@@ -7,7 +7,7 @@ import { api } from '../../services/api';
 
 import { useForm } from "react-hook-form";
 
-import { Container, Title, Column, TitleLogin, SubtitleLogin, EsqueciText, CriarText, Row, Wrapper } from './styles';
+import { Container, Title, Column, TitleLogin, SubtitleLogin, Disclaimer, CriarText, Row, Wrapper } from './styles';
 
 export default function SignUp () {
 
@@ -33,6 +33,10 @@ export default function SignUp () {
         }
     };
 
+    const handleClickLogin = () =>{
+        navigate('/login')
+    }
+
     console.log('errors', errors);
 
     return (<>
@@ -55,12 +59,12 @@ export default function SignUp () {
                     {errors.senha && <span>Senha é obrigatório</span>}
                     <Button title="Criar minha conta" variant="secondary" type="submit"/>
                 </form>
-                <p>
+                <Disclaimer>
                     Ao clicar em "Criar minha conta", declaro que aceito as políticas de privacidade e os termos de uso da DIO.
-                </p>
+                </Disclaimer>
                 <Row>
-                    <EsqueciText>Ja tenho conta</EsqueciText>
-                    <CriarText> Fazer Login </CriarText>
+                    <p>Ja tenho conta!</p>
+                    <CriarText onClick={handleClickLogin}> Fazer Login </CriarText>
                 </Row>
                 </Wrapper>
             </Column>

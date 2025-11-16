@@ -10,6 +10,13 @@ export const Container = styled.main`
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+
+        @media (max-width: 768px) {
+        flex-direction:column;
+        gap:1rem;
+        align-items: center;
+        justify-content: flex-start;
+    }
 `
 
 export const Wrapper = styled.div`
@@ -59,18 +66,6 @@ export const SubtitleLogin = styled.p`
     line-height: 25px;
     margin-bottom: 35px;
 `
-
-
-export const EsqueciText  = styled.p`
-    font-family: 'Open Sans';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 19px;
-
-    color: #E5E044;
-` 
-
 export const CriarText =  styled.p`
     font-family: 'Open Sans';
     font-style: normal;
@@ -79,4 +74,11 @@ export const CriarText =  styled.p`
     line-height: 19px;
 
     color: #23DD7A;
+`
+
+export const Disclaimer = styled.p`
+    font-weight: lighter;
+    color: whitesmoke;
+    font-size: small;
+    padding-top: 1rem;
 `

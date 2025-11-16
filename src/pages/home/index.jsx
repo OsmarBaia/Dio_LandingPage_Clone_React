@@ -5,7 +5,7 @@ import { Button } from '../../components/Button';
 
 import { Header } from '../../components/Header';
 
-import { Container, Title, TitleHighlight, TextContent } from './styles';
+import { Container, Title, TitleHighlight, TextContent, BannerImg} from './styles';
 
 export default function Home(){
     const navigate = useNavigate();
@@ -28,7 +28,7 @@ export default function Home(){
                 <Button title="Começar agora" variant="secondary" onClick={handleClickSignIn}/>
             </div>
             <div>
-                <img src={bannerImage} alt="Imagem principal do site." />
+                <BannerImg src={bannerImage} alt="Imagem principal do site." />
             </div>
         </Container>
     </>)
